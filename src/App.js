@@ -1,6 +1,10 @@
 import React from 'react';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log("Hello, constructor");
+  }
   state = {
     count: 0
   };
@@ -10,7 +14,11 @@ class App extends React.Component {
   minius = () => {
     this.setState(current => ({count: current.count - 1}));
   };
+  componentDidMount() {
+    console.log("component rendered");
+  }  
   render() {
+    console.log("i'm rendering");
     return (
       <div>
         <h1>The number is: {this.state.count}</h1>
@@ -18,6 +26,12 @@ class App extends React.Component {
         <button onClick={this.minius}>Minus</button>
       </div>
     );
+  }
+  componentDidUpdate() {
+    console.log("i just updated");
+  }
+  componentWillUnmount() {
+    console.log("goodbye");
   }
 }
 
